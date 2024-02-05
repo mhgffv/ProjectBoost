@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Start
+  - End
+  - Friendly
+  - Enemy
+  - Coin
+  - Fuel
+  - Wall
   layers:
   - Default
   - TransparentFX
