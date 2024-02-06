@@ -39,7 +39,6 @@ public class Movment : MonoBehaviour
             Particulas.SetActive(true);
 
         }
-
         else
         {
             Particulas.SetActive(false);

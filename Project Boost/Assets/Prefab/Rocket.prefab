@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RotationSpeed: 200
-  ThrustPower: 4000
+  ThrustPower: 5000
   EngineSound: {fileID: 8300000, guid: 3c4deae7671f1964585fbcf9023624c0, type: 3}
   Particulas: {fileID: 5832076256730895219}
 --- !u!82 &7179153832299174846
@@ -163,7 +163,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3c4deae7671f1964585fbcf9023624c0, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.51
   m_Pitch: 1
@@ -262,12 +262,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Retardtime: 2
-  Gas: {fileID: 0}
-  Coin: {fileID: 0}
   CoinSound: {fileID: 8300000, guid: 97d15cc225f7c9a42bc852b32c98e511, type: 3}
   FuelSound: {fileID: 8300000, guid: c79fd49c437f1c8459862d793fc65018, type: 3}
-  CrashSound: {fileID: 8300000, guid: 26a063b9abb1a914f868eb9f37b8f057, type: 3}
-  LoseSound: {fileID: 0}
+  CrashSound: {fileID: 8300000, guid: f6a29b3f9bcaab74184e6bf2793d780e, type: 3}
+  LoseSound: {fileID: 8300000, guid: 26a063b9abb1a914f868eb9f37b8f057, type: 3}
   WinSound: {fileID: 8300000, guid: aaa5cbfb77731d84b86d536318c96001, type: 3}
 --- !u!1 &5832076256730895219
 GameObject:

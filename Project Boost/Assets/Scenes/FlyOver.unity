@@ -899,11 +899,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18c7907c208ae904ca10dd917cf68a4d, type: 3}
---- !u!1 &1129959193 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3473845338831241479, guid: 4659c24736c689f4394f545f0982d8b3, type: 3}
-  m_PrefabInstance: {fileID: 5065784230990521739}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1129959194 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2121383192812199838, guid: 4659c24736c689f4394f545f0982d8b3, type: 3}
@@ -1023,11 +1018,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d837339dc8d36c34b805a44c73f1f51a, type: 3}
---- !u!1 &1476411057 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5576329769257812905, guid: b0be0a58a227d734788c5a009f36ab07, type: 3}
-  m_PrefabInstance: {fileID: 4061535627615163736}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1476411061 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3768301239463117639, guid: b0be0a58a227d734788c5a009f36ab07, type: 3}
@@ -1256,10 +1246,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Deck
       objectReference: {fileID: 0}
-    - target: {fileID: 6137119725992695131, guid: 18c7907c208ae904ca10dd917cf68a4d, type: 3}
-      propertyPath: m_TagString
-      value: Wall
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1434,14 +1420,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7356167952519599018, guid: 724f156bcc1b66e4a8a30d91699d8d47, type: 3}
-      propertyPath: Gas
-      value: 
-      objectReference: {fileID: 1476411057}
-    - target: {fileID: 7356167952519599018, guid: 724f156bcc1b66e4a8a30d91699d8d47, type: 3}
-      propertyPath: Coin
-      value: 
-      objectReference: {fileID: 1129959193}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

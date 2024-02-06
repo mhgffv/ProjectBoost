@@ -7,6 +7,9 @@ public class Enemywork : MonoBehaviour
     public GameObject Enemy;
     void OnTriggerEnter(Collider other)
     {
-        Enemy.SetActive(false);
+        if(other.gameObject.tag == "Friendly")
+        {
+            Enemy.SetActive(false);
+        }
     }
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5023944809823117626}
   - component: {fileID: 2999054883243504073}
   - component: {fileID: 5836754218114916194}
+  - component: {fileID: 9053059388794927518}
   m_Layer: 0
   m_Name: Fuel
   m_TagString: Fuel
@@ -105,3 +106,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &9053059388794927518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5576329769257812905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3aac4849445b57459b66e27c3567363, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Fuel: {fileID: 5576329769257812905}

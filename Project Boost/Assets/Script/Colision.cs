@@ -10,8 +10,7 @@ public class Colision : MonoBehaviour
     float GasAmaunt = 10f;
     float Coins = 0f;
 
-    public GameObject Gas;
-    public GameObject Coin;
+    bool IsTransition = false;
 
     public AudioClip CoinSound;
     public AudioClip FuelSound;
@@ -30,28 +29,46 @@ public class Colision : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        switch(other.gameObject.tag)
+        if(!IsTransition)
         {
-            case "Fuel":
-                Iffuel();
-            break;
+            switch(other.gameObject.tag)
+            {
+                case "Start":
 
-            case "Enemy":
-                Ifenemy();
-            break;
+                break;
 
-            case "Coin":
-                Ifcoin();
-            break;
+                case "Fuel":
+                    Iffuel();
+                break;
 
-            case "End":
-                Ifend();
-            break;
+                case "Enemy":
+                    Ifenemy();
+                break;
 
-            case "Wall":
+                case "Coin":
+                    Ifcoin();
+                break;
+
+                case "End":
+                    Ifend();
+                break;
+
+                case "Wall":
+                    General();
+                break;
+            }     
+        }  
+    }
+    void OnCollisionEnter(Collision other)
+    {
+        if(!IsTransition)
+        {
+            if(other.gameObject.tag == "Wall")
+            {
                 General();
-            break;
-        }       
+            }
+        }
+ 
     }
 
     void Iffuel()
@@ -59,7 +76,6 @@ public class Colision : MonoBehaviour
         audioSource.PlayOneShot(FuelSound);
         GasAmaunt = GasAmaunt + 3;
         Debug.Log(GasAmaunt + " gas");
-        Gas.SetActive(false);
     }
 
     void Ifenemy()
@@ -85,8 +101,9 @@ public class Colision : MonoBehaviour
 
     void General()
     {
+        audioSource.PlayOneShot(CrashSound);
         Debug.Log("SiPared");
-        HP = HP - 100f;
+        HP = HP - 50f;
         CrashSecuence();
     }
     
@@ -95,6 +112,8 @@ public class Colision : MonoBehaviour
     {
         if(HP < 1)
         {
+            IsTransition = true;
+            audioSource.Stop();
             audioSource.PlayOneShot(LoseSound);
             //Crash Particles
             rb.freezeRotation = true;
@@ -110,6 +129,8 @@ public class Colision : MonoBehaviour
 
     void SuccesSecuence()
     {
+        IsTransition = true;
+        audioSource.Stop();
         audioSource.PlayOneShot(WinSound);
         //Wining Particles
         rb.freezeRotation = true;
