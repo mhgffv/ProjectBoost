@@ -7,6 +7,9 @@ public class CoinWork : MonoBehaviour
     public GameObject Coin;
     void OnTriggerEnter(Collider other)
     {
-        Coin.SetActive(false);
+        if(other.gameObject.tag == "Friendly")
+        {
+            Coin.SetActive(false);
+        }
     }
 }

@@ -355,6 +355,7 @@
 "Assets/Script/CoinWork.cs"
 "Assets/Script/Colision.cs"
 "Assets/Script/Enemy work.cs"
+"Assets/Script/FuelWork.cs"
 "Assets/Script/Movment.cs"
 -langversion:9.0
 
