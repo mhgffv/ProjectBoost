@@ -8,7 +8,9 @@ public class Movment : MonoBehaviour
     [SerializeField] float ThrustPower;
 
     public AudioClip EngineSound;
-    public GameObject Particulas;
+    public GameObject ParticulasMotor;
+    public GameObject ParticulasDerecha;
+    public GameObject ParticulasIzquierda;
 
     AudioSource aSource;
     Rigidbody rb;
@@ -17,7 +19,9 @@ public class Movment : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         aSource = GetComponent<AudioSource>();
-        Particulas.SetActive(false);
+        ParticulasMotor.SetActive(false);
+        ParticulasDerecha.SetActive(false);
+        ParticulasIzquierda.SetActive(false);
     }
     void Update()
     {
@@ -36,12 +40,12 @@ public class Movment : MonoBehaviour
             {
                 aSource.PlayOneShot(EngineSound);
             }
-            Particulas.SetActive(true);
+            ParticulasMotor.SetActive(true);
 
         }
         else
         {
-            Particulas.SetActive(false);
+            ParticulasMotor.SetActive(false);
             aSource.Stop();
         }
     }
@@ -51,10 +55,12 @@ public class Movment : MonoBehaviour
         if(Input.GetKey("a"))
         {
             Rotation(RotationSpeed);
+            ParticulasIzquierda.SetActive(true);
         }
         else if(Input.GetKey("d"))    
         {
             Rotation(-RotationSpeed);
+            ParticulasDerecha.SetActive(true);
         }
     }
 

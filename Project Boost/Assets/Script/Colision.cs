@@ -18,6 +18,8 @@ public class Colision : MonoBehaviour
     public AudioClip LoseSound;
     public AudioClip WinSound;
 
+    public 
+
     AudioSource audioSource;
     Rigidbody rb;
 
@@ -112,6 +114,7 @@ public class Colision : MonoBehaviour
     {
         if(HP < 1)
         {
+            LoseParticles.SetActive(true);
             IsTransition = true;
             audioSource.Stop();
             audioSource.PlayOneShot(LoseSound);
