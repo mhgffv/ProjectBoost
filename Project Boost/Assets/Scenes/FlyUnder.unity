@@ -160,14 +160,19 @@ Transform:
   - {fileID: 1938092979}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &34114691 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5884785518386360000, guid: 724f156bcc1b66e4a8a30d91699d8d47, type: 3}
+--- !u!198 &34114692 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5987195653256809076, guid: 724f156bcc1b66e4a8a30d91699d8d47, type: 3}
   m_PrefabInstance: {fileID: 2951916770529039536}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &90168171 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3424107521760127381, guid: 724f156bcc1b66e4a8a30d91699d8d47, type: 3}
+  m_PrefabInstance: {fileID: 2951916770529039536}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &90168172 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3258601031590464801, guid: 724f156bcc1b66e4a8a30d91699d8d47, type: 3}
   m_PrefabInstance: {fileID: 2951916770529039536}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &126544164
@@ -235,6 +240,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2121383192812199838, guid: 4659c24736c689f4394f545f0982d8b3, type: 3}
   m_PrefabInstance: {fileID: 126544164}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &160762018 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8723965775844441517, guid: 724f156bcc1b66e4a8a30d91699d8d47, type: 3}
+  m_PrefabInstance: {fileID: 2951916770529039536}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &216020986 stripped
 Transform:
@@ -933,9 +943,14 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d837339dc8d36c34b805a44c73f1f51a, type: 3}
---- !u!1 &1453309831 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4341783079824613408, guid: 724f156bcc1b66e4a8a30d91699d8d47, type: 3}
+--- !u!198 &1453309832 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4538822811859666068, guid: 724f156bcc1b66e4a8a30d91699d8d47, type: 3}
+  m_PrefabInstance: {fileID: 2951916770529039536}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1469303702 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5644056764151043334, guid: 724f156bcc1b66e4a8a30d91699d8d47, type: 3}
   m_PrefabInstance: {fileID: 2951916770529039536}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1476411057 stripped
@@ -1290,15 +1305,15 @@ PrefabInstance:
     - target: {fileID: 1256252225065319654, guid: 724f156bcc1b66e4a8a30d91699d8d47, type: 3}
       propertyPath: ParticulasMotor
       value: 
-      objectReference: {fileID: 90168171}
+      objectReference: {fileID: 90168172}
     - target: {fileID: 1256252225065319654, guid: 724f156bcc1b66e4a8a30d91699d8d47, type: 3}
       propertyPath: ParticulasDerecha
       value: 
-      objectReference: {fileID: 1453309831}
+      objectReference: {fileID: 1453309832}
     - target: {fileID: 1256252225065319654, guid: 724f156bcc1b66e4a8a30d91699d8d47, type: 3}
       propertyPath: ParticulasIzquierda
       value: 
-      objectReference: {fileID: 34114691}
+      objectReference: {fileID: 34114692}
     - target: {fileID: 2581811180198007138, guid: 724f156bcc1b66e4a8a30d91699d8d47, type: 3}
       propertyPath: m_TagString
       value: Friendly
@@ -1355,6 +1370,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4538822811859666068, guid: 724f156bcc1b66e4a8a30d91699d8d47, type: 3}
+      propertyPath: ShapeModule.angle
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987195653256809076, guid: 724f156bcc1b66e4a8a30d91699d8d47, type: 3}
+      propertyPath: ShapeModule.angle
+      value: 70
+      objectReference: {fileID: 0}
     - target: {fileID: 7179153832299174846, guid: 724f156bcc1b66e4a8a30d91699d8d47, type: 3}
       propertyPath: Loop
       value: 1
@@ -1382,6 +1405,18 @@ PrefabInstance:
     - target: {fileID: 7356167952519599018, guid: 724f156bcc1b66e4a8a30d91699d8d47, type: 3}
       propertyPath: CrashSound
       value: 
+      objectReference: {fileID: 8300000, guid: f6a29b3f9bcaab74184e6bf2793d780e, type: 3}
+    - target: {fileID: 7356167952519599018, guid: 724f156bcc1b66e4a8a30d91699d8d47, type: 3}
+      propertyPath: LoseParticles
+      value: 
+      objectReference: {fileID: 160762018}
+    - target: {fileID: 7356167952519599018, guid: 724f156bcc1b66e4a8a30d91699d8d47, type: 3}
+      propertyPath: WinnParticles
+      value: 
+      objectReference: {fileID: 1469303702}
+    - target: {fileID: 8723965775844441517, guid: 724f156bcc1b66e4a8a30d91699d8d47, type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

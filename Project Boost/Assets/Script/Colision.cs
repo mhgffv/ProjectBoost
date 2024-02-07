@@ -7,10 +7,11 @@ public class Colision : MonoBehaviour
 {
     [SerializeField] float Retardtime = 2f;
     float HP = 100f;
-    float GasAmaunt = 10f;
+    [SerializeField]float GasAmaunt = 10f;
     float Coins = 0f;
 
     bool IsTransition = false;
+    bool Cheat = false;
 
     public AudioClip CoinSound;
     public AudioClip FuelSound;
@@ -18,7 +19,8 @@ public class Colision : MonoBehaviour
     public AudioClip LoseSound;
     public AudioClip WinSound;
 
-    public 
+    public ParticleSystem LoseParticles;
+    public ParticleSystem WinnParticles;
 
     AudioSource audioSource;
     Rigidbody rb;
@@ -28,55 +30,71 @@ public class Colision : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
     }
+    void Update()
+    {
+        CheatMode();
+    }
 
     void OnTriggerEnter(Collider other)
     {
-        if(!IsTransition)
+        if(!IsTransition || !Cheat)
         {
-            switch(other.gameObject.tag)
-            {
-                case "Start":
+                switch(other.gameObject.tag)
+                {
+                    case "Start":
 
-                break;
+                    break;
 
-                case "Fuel":
-                    Iffuel();
-                break;
+                    case "Fuel":
+                        Iffuel();
+                    break;
 
-                case "Enemy":
-                    Ifenemy();
-                break;
+                    case "Enemy":
+                        Ifenemy();
+                    break;
 
-                case "Coin":
-                    Ifcoin();
-                break;
+                    case "Coin":
+                        Ifcoin();
+                    break;
 
-                case "End":
-                    Ifend();
-                break;
+                    case "End":
+                        Ifend();
+                    break;
 
-                case "Wall":
-                    General();
-                break;
-            }     
+                    case "Wall":
+                        General();
+                    break;
+                }     
+            
         }  
     }
     void OnCollisionEnter(Collision other)
     {
-        if(!IsTransition)
+        if(!Cheat)
         {
-            if(other.gameObject.tag == "Wall")
+            if(!IsTransition)
             {
-                General();
+                if(other.gameObject.tag == "Wall")
+                {
+                    General();
+                }
             }
         }
- 
     }
+
+    void FelNeed()
+    {
+        if(Input.GetKey(KeyCode.Space))
+        {
+            GasAmaunt = GasAmaunt - 1 * Time.deltaTime;
+        }
+    }
+    
 
     void Iffuel()
     {
         audioSource.PlayOneShot(FuelSound);
-        GasAmaunt = GasAmaunt + 3;
+        GasAmaunt = GasAmaunt + 5;
         Debug.Log(GasAmaunt + " gas");
     }
 
@@ -84,6 +102,7 @@ public class Colision : MonoBehaviour
     {
        audioSource.PlayOneShot(CrashSound);
        HP = HP - 25f;
+       GasAmaunt--;
        Debug.Log(HP + "% de vida");
        CrashSecuence();
     }
@@ -114,11 +133,10 @@ public class Colision : MonoBehaviour
     {
         if(HP < 1)
         {
-            LoseParticles.SetActive(true);
+            LoseParticles.Play();
             IsTransition = true;
             audioSource.Stop();
             audioSource.PlayOneShot(LoseSound);
-            //Crash Particles
             rb.freezeRotation = true;
             //rb.freezePosition;
             GetComponent<Movment>().enabled = false;
@@ -135,11 +153,12 @@ public class Colision : MonoBehaviour
         IsTransition = true;
         audioSource.Stop();
         audioSource.PlayOneShot(WinSound);
-        //Wining Particles
+        WinnParticles.Play();
         rb.freezeRotation = true;
         //rb.FreezePosition = true;
         GetComponent<Movment>().enabled = false;
         Invoke("NextLevel", Retardtime);
+
         
     }
     void NextLevel()
@@ -151,5 +170,26 @@ public class Colision : MonoBehaviour
             LevelChanger = 0;
         }
         SceneManager.LoadScene(LevelChanger);
+    }
+
+    void CheatMode()
+    {
+        if(Input.GetKey("c"))
+        {
+            Cheat = !Cheat;
+            if(Cheat == false)
+            {
+                Debug.Log("Cheat Desactivado");
+            }
+            if(Cheat == true)
+            {
+                Debug.Log("Cheat activado");
+            }
+        }
+
+        if(Input.GetKey("l"))
+        {
+            NextLevel();
+        }
     }
 }

@@ -8,9 +8,10 @@ public class Movment : MonoBehaviour
     [SerializeField] float ThrustPower;
 
     public AudioClip EngineSound;
-    public GameObject ParticulasMotor;
-    public GameObject ParticulasDerecha;
-    public GameObject ParticulasIzquierda;
+
+    public ParticleSystem ParticulasMotor;
+    public ParticleSystem ParticulasDerecha;
+    public ParticleSystem ParticulasIzquierda;
 
     AudioSource aSource;
     Rigidbody rb;
@@ -19,9 +20,6 @@ public class Movment : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         aSource = GetComponent<AudioSource>();
-        ParticulasMotor.SetActive(false);
-        ParticulasDerecha.SetActive(false);
-        ParticulasIzquierda.SetActive(false);
     }
     void Update()
     {
@@ -35,18 +33,23 @@ public class Movment : MonoBehaviour
             //Fuel Consume
             //Fuel Necesity
             //out of fuel Sound
+
             rb.AddRelativeForce(Vector3.up * ThrustPower * Time.deltaTime);
             if(!aSource.isPlaying)
             {
                 aSource.PlayOneShot(EngineSound);
             }
-            ParticulasMotor.SetActive(true);
+
+            if(!ParticulasMotor.isPlaying)
+            {
+                ParticulasMotor.Play();
+            }
 
         }
         else
         {
-            ParticulasMotor.SetActive(false);
             aSource.Stop();
+            ParticulasMotor.Stop();
         }
     }
 
@@ -55,12 +58,24 @@ public class Movment : MonoBehaviour
         if(Input.GetKey("a"))
         {
             Rotation(RotationSpeed);
-            ParticulasIzquierda.SetActive(true);
+            if (!ParticulasDerecha.isPlaying)
+            {
+                ParticulasDerecha.Play();
+            }
         }
+
         else if(Input.GetKey("d"))    
         {
             Rotation(-RotationSpeed);
-            ParticulasDerecha.SetActive(true);
+            if (!ParticulasIzquierda.isPlaying)
+            {
+                ParticulasIzquierda.Play();
+            }
+        }
+        else
+        {
+            ParticulasIzquierda.Stop();
+            ParticulasDerecha.Stop();
         }
     }
 
