@@ -357,6 +357,8 @@
 "Assets/Script/Enemy work.cs"
 "Assets/Script/FuelWork.cs"
 "Assets/Script/Movment.cs"
+"Assets/Script/Ocilator.cs"
+"Assets/Script/Quit.cs"
 -langversion:9.0
 
 /deterministic

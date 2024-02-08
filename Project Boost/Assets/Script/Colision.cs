@@ -7,7 +7,6 @@ public class Colision : MonoBehaviour
 {
     [SerializeField] float Retardtime = 2f;
     float HP = 100f;
-    [SerializeField]float GasAmaunt = 10f;
     float Coins = 0f;
 
     bool IsTransition = false;
@@ -82,27 +81,15 @@ public class Colision : MonoBehaviour
         }
     }
 
-    void FelNeed()
-    {
-        if(Input.GetKey(KeyCode.Space))
-        {
-            GasAmaunt = GasAmaunt - 1 * Time.deltaTime;
-        }
-    }
-    
-
     void Iffuel()
     {
         audioSource.PlayOneShot(FuelSound);
-        GasAmaunt = GasAmaunt + 5;
-        Debug.Log(GasAmaunt + " gas");
     }
 
     void Ifenemy()
     {
        audioSource.PlayOneShot(CrashSound);
        HP = HP - 25f;
-       GasAmaunt--;
        Debug.Log(HP + "% de vida");
        CrashSecuence();
     }
