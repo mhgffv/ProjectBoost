@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Colision : MonoBehaviour
 {
     [SerializeField] float Retardtime = 2f;
+    [SerializeField] float GasAmaunt = 0f;
     float HP = 100f;
     float Coins = 0f;
 
@@ -17,6 +18,8 @@ public class Colision : MonoBehaviour
     public AudioClip CrashSound;
     public AudioClip LoseSound;
     public AudioClip WinSound;
+    public AudioClip OutOfFuel;
+
 
     public ParticleSystem LoseParticles;
     public ParticleSystem WinnParticles;
@@ -32,6 +35,7 @@ public class Colision : MonoBehaviour
     void Update()
     {
         CheatMode();
+        FuelNeed();
     }
 
     void OnTriggerEnter(Collider other)
@@ -83,6 +87,7 @@ public class Colision : MonoBehaviour
 
     void Iffuel()
     {
+        GasAmaunt = GasAmaunt + 10;
         audioSource.PlayOneShot(FuelSound);
     }
 
@@ -90,6 +95,7 @@ public class Colision : MonoBehaviour
     {
        audioSource.PlayOneShot(CrashSound);
        HP = HP - 25f;
+       GasAmaunt--;
        Debug.Log(HP + "% de vida");
        CrashSecuence();
     }
@@ -177,6 +183,18 @@ public class Colision : MonoBehaviour
         if(Input.GetKey("l"))
         {
             NextLevel();
+        }
+    }
+    void FuelNeed()
+    {
+        if(Input.GetKey(KeyCode.Space))
+        {
+            GasAmaunt = GasAmaunt - 1 * Time.deltaTime;
+        }
+        if(GasAmaunt < 0)
+        {
+            GetComponent<Movment>().enabled = false;
+            audioSource.PlayOneShot(OutOfFuel);
         }
     }
 }

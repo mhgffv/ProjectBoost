@@ -8,13 +8,9 @@ public class Movment : MonoBehaviour
     [SerializeField] float ThrustPower;
 
     public AudioClip EngineSound;
-    public AudioClip OutOfFuel;
-
     public ParticleSystem ParticulasMotor;
     public ParticleSystem ParticulasDerecha;
     public ParticleSystem ParticulasIzquierda;
-
-    [SerializeField]float GasAmaunt = 50f;
 
     AudioSource aSource;
     Rigidbody rb;
@@ -33,27 +29,16 @@ public class Movment : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.Space))
         {
-            FuelNeed();
             //out of fuel Sound
-            if(GasAmaunt > 0)
+            rb.AddRelativeForce(Vector3.up * ThrustPower * Time.deltaTime);
+            if(!aSource.isPlaying)
             {
-                rb.AddRelativeForce(Vector3.up * ThrustPower * Time.deltaTime);
-                if(!aSource.isPlaying)
-                {
-                    aSource.PlayOneShot(EngineSound);
-                }
-
-                if(!ParticulasMotor.isPlaying)
-                {
-                    ParticulasMotor.Play();
-                }
+                aSource.PlayOneShot(EngineSound);
             }
-            else
+
+            else if(!ParticulasMotor.isPlaying)
             {
-                if(!aSource.isPlaying)
-                {
-                    aSource.PlayOneShot(OutOfFuel);
-                }      
+                ParticulasMotor.Play();
             }
 
         }
@@ -95,13 +80,5 @@ public class Movment : MonoBehaviour
         rb.freezeRotation = true;
         transform.Rotate(Vector3.forward * RotationFrame * Time.deltaTime);
         rb.freezeRotation = false;
-    }
-
-    void FuelNeed()
-    {
-        if(Input.GetKey(KeyCode.Space))
-        {
-            GasAmaunt = GasAmaunt - 1 * Time.deltaTime;
-        }
     }
 }
